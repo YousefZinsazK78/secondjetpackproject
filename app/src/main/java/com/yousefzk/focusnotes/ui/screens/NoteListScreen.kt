@@ -1,5 +1,6 @@
 package com.yousefzk.focusnotes.ui.screens
 
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -8,11 +9,10 @@ import com.yousefzk.focusnotes.ui.components.CustomAddNoteFAB
 import com.yousefzk.focusnotes.ui.components.CustomTopAppBar
 import com.yousefzk.focusnotes.ui.components.NoteList
 
-@Preview
 @Composable
-fun NoteListScreen() {
+fun NoteListScreen(drawerState: DrawerState) {
     Scaffold(
-        topBar = { CustomTopAppBar() },
+        topBar = { CustomTopAppBar(drawerState = drawerState) },
         floatingActionButton = { CustomAddNoteFAB() }
     ) { innerPadding ->
         NoteList(innerPadding)
