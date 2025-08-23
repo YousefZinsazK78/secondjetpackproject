@@ -10,6 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.yousefzk.focusnotes.ui.components.drawer.DrawerBody
 import com.yousefzk.focusnotes.ui.components.drawer.DrawerHeader
 
@@ -17,6 +20,7 @@ import com.yousefzk.focusnotes.ui.components.drawer.DrawerHeader
 @Composable
 fun FocusNoteApp() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
+    val navController = rememberNavController()
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -29,6 +33,21 @@ fun FocusNoteApp() {
                 DrawerBody()
             }
         },
-        content = { NoteListScreen(drawerState) }
+        content = {
+            NavHost(navController = navController, startDestination = "note_list") {
+                composable(route = "note_list") {
+                    NoteListScreen(
+                        drawerState,
+                        onClickFab = {
+                            navController.navigate("add_note")
+                        })
+                }
+
+                composable(route = "add_note") {
+                    AddNoteScreen(drawerState)
+                }
+
+            }
+        }
     )
 }

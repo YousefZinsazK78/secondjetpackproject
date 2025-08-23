@@ -13,11 +13,14 @@ import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
-fun CustomAddNoteFAB(modifier: Modifier = Modifier) {
+fun CustomAddNoteFAB(
+    modifier: Modifier = Modifier,
+    onclick: () -> Unit = {}
+) {
     ExtendedFloatingActionButton(
         text = { Text(text = "Add Note") },
         icon = { Icon(imageVector = Icons.Default.Add, contentDescription = "add note icon") },
-        onClick = { },
+        onClick = onclick,
         modifier = modifier.padding(16.dp)
 
     )
