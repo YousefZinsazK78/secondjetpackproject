@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
-fun CustomNoteItem(modifier: Modifier = Modifier) {
+fun CustomNoteItem() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
