@@ -14,7 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.yousefzk.focusnotes.ui.screens.FocusNoteApp
 import com.yousefzk.focusnotes.ui.screens.NoteListScreen
 import com.yousefzk.focusnotes.ui.theme.FocusNotesTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

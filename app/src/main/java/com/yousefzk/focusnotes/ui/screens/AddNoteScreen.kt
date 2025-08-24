@@ -31,6 +31,7 @@ import com.yousefzk.focusnotes.data.source.local.NoteDatabase
 import com.yousefzk.focusnotes.ui.components.CustomAddNoteFAB
 import com.yousefzk.focusnotes.ui.components.CustomTopAppBar
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 @Composable
 fun AddNoteScreen(drawerState: DrawerState) {
@@ -48,14 +49,14 @@ fun AddNoteScreen(drawerState: DrawerState) {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    val note = LocalNote(
+                        title = title,
+                        content = content,
+                        createdAt = LocalDateTime.now(),
+                        updatedAt = LocalDateTime.now()
+                    )
                     scope.launch {
-                        noteDao.InsertNote(
-                            note = LocalNote(
-                                title = title,
-                                content = content
-                            )
-                        )
+                        noteDao.InsertNote(note)
                     }
 
                 }

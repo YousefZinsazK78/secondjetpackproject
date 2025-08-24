@@ -13,5 +13,5 @@ data class LocalNote(
     val title: String = "",
     val content: String,
     val createdAt: LocalDateTime = LocalDateTime.now(),
-    val updatedAt: LocalDateTime = LocalDateTime.now(),
+    val isStarred : Boolean,
 )
